@@ -28,7 +28,7 @@ jobs:
         name: Deploy To Azure App Service
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'samplereact'
+          app-name: 'samplereact123'
           publish-profile: ${{ secrets.azureWebAppPublishProfile }}
           images: 'samplereact.azurecr.io/azure_docker_react:${{ github.sha }}'
       -
