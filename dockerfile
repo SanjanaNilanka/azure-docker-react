@@ -1,13 +1,23 @@
-FROM node:20.11.0
+# Use an official Node.js runtime as a parent image
+FROM node:20-alpine
 
+# Set the working directory in the container
 WORKDIR /app
 
-COPY package.json .
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the rest of the application files
 COPY . .
 
-EXPOSE 3000
+# Build the app
+RUN npm run build
 
-CMD [ "npm", "start" ]
+# Expose port 6757
+EXPOSE 6757
+
+# Start nginx
+CMD ["npm","run","preview"]
